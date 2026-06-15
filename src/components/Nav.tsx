@@ -100,9 +100,9 @@ export default function Nav() {
 
             {/* Desktop-only CTA */}
             <div className="hidden lg:block">
-              <Link href="/apply" className="btn-primary" style={{ fontSize: "0.62rem", padding: "0.55rem 1.3rem" }}>
+              <span className="btn-primary opacity-50 cursor-not-allowed pointer-events-none" style={{ fontSize: "0.62rem", padding: "0.55rem 1.3rem" }}>
                 {tr.nav.cta}
-              </Link>
+              </span>
             </div>
           </div>
         </div>
@@ -168,9 +168,9 @@ export default function Nav() {
                 transition={{ delay: links.length * 0.04 + 0.1 }}
                 className="mt-8"
               >
-                <Link href="/apply" className="btn-primary w-full justify-center" onClick={() => setMenuOpen(false)}>
+                <span className="btn-primary w-full justify-center opacity-50 cursor-not-allowed pointer-events-none" onClick={() => setMenuOpen(false)}>
                   {tr.hero.cta}
-                </Link>
+                </span>
               </motion.div>
             </div>
           </motion.div>

@@ -118,9 +118,9 @@ export default function StoriesPage() {
         </ScrollReveal>
         <div className="divider" />
         <ScrollReveal delay={0.1} className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-          <Link href="/apply" className="btn-primary animate-breathe">
+          <span className="btn-primary animate-breathe opacity-50 cursor-not-allowed pointer-events-none">
             {tr.storiesPage.ctaBtn}
-          </Link>
+          </span>
           <Link href="/community" className="btn-outline inline-flex items-center gap-2">
             {tr.storiesPage.ctaOutline} <ArrowRight size={14} />
           </Link>

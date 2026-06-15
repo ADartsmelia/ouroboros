@@ -93,9 +93,9 @@ export default function Home() {
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-row gap-3 items-center flex-wrap justify-center">
-              <Link href="/apply" className="btn-primary animate-breathe">
+              <span className="btn-primary animate-breathe opacity-50 cursor-not-allowed pointer-events-none">
                 {tr.hero.cta}
-              </Link>
+              </span>
               <Link href="/about" className="btn-outline">
                 {tr.hero.ctaOutline}
               </Link>
@@ -249,9 +249,9 @@ export default function Home() {
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.3}>
-            <Link href="/apply" className="btn-primary animate-breathe">
+            <span className="btn-primary animate-breathe opacity-50 cursor-not-allowed pointer-events-none">
               {tr.cta.btn}
-            </Link>
+            </span>
           </ScrollReveal>
         </div>
       </section>
