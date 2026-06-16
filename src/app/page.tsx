@@ -31,13 +31,15 @@ export default function Home() {
         <div
           className="absolute inset-0"
           style={{
-            background: "radial-gradient(ellipse 80% 60% at 50% 40%, rgba(45, 90, 61, 0.12) 0%, rgba(10, 12, 10, 0) 70%)",
+            background:
+              "radial-gradient(ellipse 80% 60% at 50% 40%, rgba(45, 90, 61, 0.12) 0%, rgba(10, 12, 10, 0) 70%)",
           }}
         />
         <div
           className="absolute inset-0 animate-fog"
           style={{
-            background: "radial-gradient(ellipse 60% 40% at 30% 60%, rgba(74, 140, 92, 0.06) 0%, transparent 70%)",
+            background:
+              "radial-gradient(ellipse 60% 40% at 30% 60%, rgba(74, 140, 92, 0.06) 0%, transparent 70%)",
           }}
         />
         <ParticleField />
@@ -62,7 +64,8 @@ export default function Home() {
               <div
                 className="absolute inset-0 -z-10"
                 style={{
-                  background: "radial-gradient(circle, rgba(74, 140, 92, 0.12) 0%, transparent 60%)",
+                  background:
+                    "radial-gradient(circle, rgba(74, 140, 92, 0.12) 0%, transparent 60%)",
                   transform: "scale(1.5)",
                 }}
               />
@@ -75,7 +78,10 @@ export default function Home() {
             <motion.h1
               variants={fadeUp}
               className="display text-[2.1rem] sm:text-[3.4rem] lg:text-[5rem] font-bold leading-[1.04] mb-4"
-              style={{ color: "var(--text-primary)", letterSpacing: "-0.025em" }}
+              style={{
+                color: "var(--text-primary)",
+                letterSpacing: "-0.025em",
+              }}
             >
               {tr.hero.h1}
               <br />
@@ -92,7 +98,10 @@ export default function Home() {
               {tr.hero.body}
             </motion.p>
 
-            <motion.div variants={fadeUp} className="flex flex-row gap-3 items-center flex-wrap justify-center">
+            <motion.div
+              variants={fadeUp}
+              className="flex flex-row gap-3 items-center flex-wrap justify-center"
+            >
               <span className="btn-primary animate-breathe opacity-50 cursor-not-allowed pointer-events-none">
                 {tr.hero.cta}
               </span>
@@ -101,7 +110,11 @@ export default function Home() {
               </Link>
             </motion.div>
 
-            <motion.p variants={fadeUp} className="mt-4 text-[0.58rem] tracking-[0.14em] uppercase" style={{ color: "var(--text-muted)" }}>
+            <motion.p
+              variants={fadeUp}
+              className="mt-4 text-[0.58rem] tracking-[0.14em] uppercase"
+              style={{ color: "var(--text-muted)" }}
+            >
               {tr.hero.fine}
             </motion.p>
           </motion.div>
@@ -113,36 +126,55 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ delay: 2.5 }}
         >
-          <span className="text-[0.55rem] tracking-[0.22em] uppercase" style={{ color: "var(--text-muted)" }}>↓</span>
+          <span
+            className="text-[0.55rem] tracking-[0.22em] uppercase"
+            style={{ color: "var(--text-muted)" }}
+          ></span>
           <motion.div
             animate={{ y: [0, 7, 0] }}
             transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
             className="w-px h-6"
-            style={{ background: "linear-gradient(to bottom, var(--accent-gold), transparent)" }}
+            style={{
+              background:
+                "linear-gradient(to bottom, var(--accent-gold), transparent)",
+            }}
           />
         </motion.div>
       </section>
 
       {/* MANIFESTO */}
-      <section className="py-20 sm:py-32 px-5 sm:px-6" style={{ background: "var(--bg-secondary)" }}>
+      <section
+        className="py-20 sm:py-32 px-5 sm:px-6"
+        style={{ background: "var(--bg-secondary)" }}
+      >
         <div className="max-w-3xl mx-auto text-center">
           <ScrollReveal>
             <p className="section-label">{tr.manifesto.label}</p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h2 className="display text-[1.9rem] sm:text-[3rem] lg:text-[3.8rem] font-bold leading-[1.1] mb-6" style={{ color: "var(--text-primary)" }}>
-              {tr.manifesto.h2}<br />
+            <h2
+              className="display text-[1.9rem] sm:text-[3rem] lg:text-[3.8rem] font-bold leading-[1.1] mb-6"
+              style={{ color: "var(--text-primary)" }}
+            >
+              {tr.manifesto.h2}
+              <br />
               <em className="gradient-text not-italic">{tr.manifesto.h2b}</em>
             </h2>
           </ScrollReveal>
           <div className="divider" />
           <ScrollReveal delay={0.2}>
-            <p className="text-[0.85rem] sm:text-base leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+            <p
+              className="text-[0.85rem] sm:text-base leading-relaxed"
+              style={{ color: "var(--text-secondary)" }}
+            >
               {tr.manifesto.body}
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.3} className="mt-10">
-            <Link href="/about" className="btn-outline inline-flex items-center gap-2">
+            <Link
+              href="/about"
+              className="btn-outline inline-flex items-center gap-2"
+            >
               {tr.manifesto.link} <ArrowRight size={14} />
             </Link>
           </ScrollReveal>
@@ -154,19 +186,33 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal className="text-center mb-10 sm:mb-16">
             <p className="section-label">{tr.pillars.label}</p>
-            <h2 className="display text-[1.8rem] sm:text-[2.4rem] lg:text-[3.2rem] font-bold" style={{ color: "var(--text-primary)" }}>
+            <h2
+              className="display text-[1.8rem] sm:text-[2.4rem] lg:text-[3.2rem] font-bold"
+              style={{ color: "var(--text-primary)" }}
+            >
               {tr.pillars.h2}
             </h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {tr.pillars.items.map((pillar, i) => (
               <ScrollReveal key={pillar.number} delay={i * 0.08}>
-                <div className="card-glow p-7 flex flex-col h-full" style={{ background: "var(--bg-card)" }}>
-                  <div className="display text-[3rem] font-light mb-3 leading-none" style={{ color: "rgba(201,168,76,0.14)" }}>
+                <div
+                  className="card-glow p-7 flex flex-col h-full"
+                  style={{ background: "var(--bg-card)" }}
+                >
+                  <div
+                    className="display text-[3rem] font-light mb-3 leading-none"
+                    style={{ color: "rgba(201,168,76,0.14)" }}
+                  >
                     {pillar.number}
                   </div>
-                  <h3 className="display text-[1.2rem] font-medium mb-2 gradient-text">{pillar.title}</h3>
-                  <p className="text-[0.78rem] leading-relaxed flex-1" style={{ color: "var(--text-secondary)" }}>
+                  <h3 className="display text-[1.2rem] font-medium mb-2 gradient-text">
+                    {pillar.title}
+                  </h3>
+                  <p
+                    className="text-[0.78rem] leading-relaxed flex-1"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
                     {pillar.body}
                   </p>
                 </div>
@@ -177,11 +223,17 @@ export default function Home() {
       </section>
 
       {/* PATHS */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6" style={{ background: "var(--bg-secondary)" }}>
+      <section
+        className="py-20 sm:py-32 px-4 sm:px-6"
+        style={{ background: "var(--bg-secondary)" }}
+      >
         <div className="max-w-6xl mx-auto">
           <ScrollReveal className="text-center mb-10 sm:mb-16">
             <p className="section-label">{tr.paths.label}</p>
-            <h2 className="display text-[1.8rem] sm:text-[2.4rem] lg:text-[3rem] font-bold" style={{ color: "var(--text-primary)" }}>
+            <h2
+              className="display text-[1.8rem] sm:text-[2.4rem] lg:text-[3rem] font-bold"
+              style={{ color: "var(--text-primary)" }}
+            >
               {tr.paths.h2}
             </h2>
           </ScrollReveal>
@@ -189,26 +241,46 @@ export default function Home() {
             {tr.paths.items.map((path, i) => (
               <ScrollReveal key={pathSlugs[i]} delay={i * 0.15}>
                 <Link href={pathHrefs[i]}>
-                  <div className="card-glow p-7 sm:p-10 h-full cursor-pointer group" style={{ background: "var(--bg-card)" }}>
+                  <div
+                    className="card-glow p-7 sm:p-10 h-full cursor-pointer group"
+                    style={{ background: "var(--bg-card)" }}
+                  >
                     <div className="flex items-start justify-between mb-6">
-                      <span className="section-label" style={{ margin: 0 }}>{path.tag}</span>
+                      <span className="section-label" style={{ margin: 0 }}>
+                        {path.tag}
+                      </span>
                       <ArrowRight
                         size={14}
                         className="transition-transform duration-300 group-hover:translate-x-1"
                         style={{ color: "var(--accent-green-bright)" }}
                       />
                     </div>
-                    <p className="text-[0.6rem] tracking-[0.2em] uppercase mb-2" style={{ color: "var(--text-muted)" }}>
+                    <p
+                      className="text-[0.6rem] tracking-[0.2em] uppercase mb-2"
+                      style={{ color: "var(--text-muted)" }}
+                    >
                       {path.subtitle}
                     </p>
-                    <h3 className="display text-[1.6rem] sm:text-[2rem] font-medium mb-4" style={{ color: "var(--text-primary)" }}>
+                    <h3
+                      className="display text-[1.6rem] sm:text-[2rem] font-medium mb-4"
+                      style={{ color: "var(--text-primary)" }}
+                    >
                       {path.label}
                     </h3>
-                    <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                    <p
+                      className="text-sm leading-relaxed"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
                       {path.desc}
                     </p>
-                    <div className="mt-8 pt-6 border-t" style={{ borderColor: "var(--border-subtle)" }}>
-                      <span className="text-xs tracking-widest uppercase" style={{ color: "var(--accent-gold)" }}>
+                    <div
+                      className="mt-8 pt-6 border-t"
+                      style={{ borderColor: "var(--border-subtle)" }}
+                    >
+                      <span
+                        className="text-xs tracking-widest uppercase"
+                        style={{ color: "var(--accent-gold)" }}
+                      >
                         {path.link}
                       </span>
                     </div>
@@ -221,30 +293,44 @@ export default function Home() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-24 sm:py-40 px-4 sm:px-6 relative overflow-hidden" style={{ background: "var(--bg-secondary)" }}>
+      <section
+        className="py-24 sm:py-40 px-4 sm:px-6 relative overflow-hidden"
+        style={{ background: "var(--bg-secondary)" }}
+      >
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(74, 140, 92, 0.07) 0%, transparent 70%)",
+            background:
+              "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(74, 140, 92, 0.07) 0%, transparent 70%)",
           }}
         />
         <div className="relative max-w-2xl mx-auto text-center">
           <ScrollReveal>
             <div className="flex justify-center mb-6 sm:mb-8">
-              <div className="animate-ouroboros" style={{ width: 64, height: 64 }}>
+              <div
+                className="animate-ouroboros"
+                style={{ width: 64, height: 64 }}
+              >
                 <OuroborosSVG size={64} glowing />
               </div>
             </div>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h2 className="display text-[2rem] sm:text-[3.4rem] lg:text-[4.5rem] font-bold leading-[1.06] mb-5" style={{ color: "var(--text-primary)" }}>
-              {tr.cta.h2}<br />
+            <h2
+              className="display text-[2rem] sm:text-[3.4rem] lg:text-[4.5rem] font-bold leading-[1.06] mb-5"
+              style={{ color: "var(--text-primary)" }}
+            >
+              {tr.cta.h2}
+              <br />
               <em className="gradient-text not-italic">{tr.cta.h2b}</em>
             </h2>
           </ScrollReveal>
           <div className="divider" />
           <ScrollReveal delay={0.2}>
-            <p className="text-[0.85rem] sm:text-base mb-8" style={{ color: "var(--text-secondary)" }}>
+            <p
+              className="text-[0.85rem] sm:text-base mb-8"
+              style={{ color: "var(--text-secondary)" }}
+            >
               {tr.cta.body}
             </p>
           </ScrollReveal>
