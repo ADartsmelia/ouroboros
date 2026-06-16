@@ -43,7 +43,16 @@ export default function ApplyPage() {
   const isLast = current === questions.length - 1;
   const canAdvance = answers[q.id] && answers[q.id].trim().length > 0;
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    try {
+      await fetch("/api/apply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, answers }),
+      });
+    } catch (_) {
+      // fail silently — user still sees success screen
+    }
     setSubmitted(true);
   };
 
