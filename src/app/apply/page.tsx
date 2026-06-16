@@ -14,7 +14,14 @@ type Form = {
   phone: string;
 };
 
-const empty: Form = { course: "", firstName: "", lastName: "", dob: "", email: "", phone: "" };
+const empty: Form = {
+  course: "",
+  firstName: "",
+  lastName: "",
+  dob: "",
+  email: "",
+  phone: "",
+};
 
 export default function ApplyPage() {
   const { tr } = useLang();
@@ -50,7 +57,10 @@ export default function ApplyPage() {
 
   if (submitted) {
     return (
-      <div style={{ background: "var(--bg-primary)" }} className="min-h-screen flex items-center justify-center px-6">
+      <div
+        style={{ background: "var(--bg-primary)" }}
+        className="min-h-screen flex items-center justify-center px-6"
+      >
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -63,19 +73,31 @@ export default function ApplyPage() {
             </div>
           </div>
           <p className="section-label">{tr.apply.successLabel}</p>
-          <h1 className="text-4xl font-bold mb-6" style={{ color: "var(--text-primary)" }}>
-            {tr.apply.successH1}<br />
+          <h1
+            className="text-4xl font-bold mb-6"
+            style={{ color: "var(--text-primary)" }}
+          >
+            {tr.apply.successH1}
+            <br />
             <span className="gradient-text">{tr.apply.successH1b}</span>
           </h1>
           <div className="divider" />
-          <p className="text-base leading-relaxed mb-8" style={{ color: "var(--text-secondary)" }}>
+          <p
+            className="text-base leading-relaxed mb-8"
+            style={{ color: "var(--text-secondary)" }}
+          >
             {tr.apply.successBody}
           </p>
           <p className="text-sm" style={{ color: "var(--text-muted)" }}>
             {tr.apply.successMetaPre}{" "}
-            <a href="/about" style={{ color: "var(--accent-gold)" }}>{tr.apply.successMetaLink1}</a>{" "}
+            <a href="/about" style={{ color: "var(--accent-gold)" }}>
+              {tr.apply.successMetaLink1}
+            </a>{" "}
             {tr.apply.successMetaMid}{" "}
-            <a href="/stories" style={{ color: "var(--accent-gold)" }}>{tr.apply.successMetaLink2}</a>.
+            <a href="/stories" style={{ color: "var(--accent-gold)" }}>
+              {tr.apply.successMetaLink2}
+            </a>
+            .
           </p>
         </motion.div>
       </div>
@@ -88,10 +110,17 @@ export default function ApplyPage() {
       <section className="relative pt-40 pb-12 px-6 overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(74,140,92,0.07) 0%, transparent 60%)" }}
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(74,140,92,0.07) 0%, transparent 60%)",
+          }}
         />
         <div className="max-w-2xl mx-auto text-center">
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="section-label">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="section-label"
+          >
             {tr.apply.heroLabel}
           </motion.p>
           <motion.h1
@@ -101,7 +130,8 @@ export default function ApplyPage() {
             className="text-5xl font-bold leading-[0.95] tracking-tight mb-4"
             style={{ color: "var(--text-primary)" }}
           >
-            {tr.apply.heroH1}<br />
+            {tr.apply.heroH1}
+            <br />
             <span className="gradient-text">{tr.apply.heroH1b}</span>
           </motion.h1>
           <motion.p
@@ -136,13 +166,30 @@ export default function ApplyPage() {
                   onClick={() => setForm((f) => ({ ...f, course: c.value }))}
                   className="text-left p-5 border transition-all duration-200"
                   style={{
-                    borderColor: form.course === c.value ? "var(--border-glow)" : "var(--border-subtle)",
-                    background: form.course === c.value ? "rgba(74,140,92,0.07)" : "var(--bg-card)",
-                    boxShadow: form.course === c.value ? "var(--glow-green)" : "none",
+                    borderColor:
+                      form.course === c.value
+                        ? "var(--border-glow)"
+                        : "var(--border-subtle)",
+                    background:
+                      form.course === c.value
+                        ? "rgba(74,140,92,0.07)"
+                        : "var(--bg-card)",
+                    boxShadow:
+                      form.course === c.value ? "var(--glow-green)" : "none",
                   }}
                 >
-                  <p className="font-semibold" style={{ color: "var(--text-primary)" }}>{c.label}</p>
-                  <p className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>{c.sub}</p>
+                  <p
+                    className="font-semibold"
+                    style={{ color: "var(--text-primary)" }}
+                  >
+                    {c.label}
+                  </p>
+                  <p
+                    className="text-xs mt-1"
+                    style={{ color: "var(--text-muted)" }}
+                  >
+                    {c.sub}
+                  </p>
                 </button>
               ))}
             </div>
@@ -150,30 +197,66 @@ export default function ApplyPage() {
 
           {/* Name row */}
           <div className="grid grid-cols-2 gap-4">
-            <Field label={tr.apply.firstName} type="text" value={form.firstName} onChange={set("firstName")} placeholder="Anri" />
-            <Field label={tr.apply.lastName}  type="text" value={form.lastName}  onChange={set("lastName")}  placeholder="Dartsmelia" />
+            <Field
+              label={tr.apply.firstName}
+              type="text"
+              value={form.firstName}
+              onChange={set("firstName")}
+              placeholder="სახელი"
+            />
+            <Field
+              label={tr.apply.lastName}
+              type="text"
+              value={form.lastName}
+              onChange={set("lastName")}
+              placeholder="გვარი"
+            />
           </div>
 
           {/* DOB */}
-          <Field label={tr.apply.dob} type="date" value={form.dob} onChange={set("dob")} placeholder="" />
+          <Field
+            label={tr.apply.dob}
+            type="date"
+            value={form.dob}
+            onChange={set("dob")}
+            placeholder=""
+          />
 
           {/* Email */}
-          <Field label={tr.apply.email} type="email" value={form.email} onChange={set("email")} placeholder="you@email.com" />
+          <Field
+            label={tr.apply.email}
+            type="email"
+            value={form.email}
+            onChange={set("email")}
+            placeholder="you@email.com"
+          />
 
           {/* Phone */}
-          <Field label={tr.apply.phone} type="tel" value={form.phone} onChange={set("phone")} placeholder="+995 5XX XXX XXX" />
+          <Field
+            label={tr.apply.phone}
+            type="tel"
+            value={form.phone}
+            onChange={set("phone")}
+            placeholder="+995 5XX XXX XXX"
+          />
 
           {/* Submit */}
           <button
             type="submit"
             disabled={!valid || loading}
             className="btn-primary w-full text-center"
-            style={{ opacity: !valid || loading ? 0.45 : 1, transition: "opacity 0.2s" }}
+            style={{
+              opacity: !valid || loading ? 0.45 : 1,
+              transition: "opacity 0.2s",
+            }}
           >
             {loading ? tr.apply.submitting : tr.apply.submit}
           </button>
 
-          <p className="text-xs text-center" style={{ color: "var(--text-muted)" }}>
+          <p
+            className="text-xs text-center"
+            style={{ color: "var(--text-muted)" }}
+          >
             {tr.apply.requiredNote}
           </p>
         </motion.form>
@@ -183,7 +266,11 @@ export default function ApplyPage() {
 }
 
 function Field({
-  label, type, value, onChange, placeholder,
+  label,
+  type,
+  value,
+  onChange,
+  placeholder,
 }: {
   label: string;
   type: string;
@@ -193,7 +280,10 @@ function Field({
 }) {
   return (
     <div className="flex flex-col gap-2">
-      <label className="text-xs tracking-widest uppercase" style={{ color: "var(--text-muted)" }}>
+      <label
+        className="text-xs tracking-widest uppercase"
+        style={{ color: "var(--text-muted)" }}
+      >
         {label}
       </label>
       <input
@@ -211,7 +301,7 @@ function Field({
           transition: "border-color 0.2s",
         }}
         onFocus={(e) => (e.target.style.borderColor = "var(--border-glow)")}
-        onBlur={(e)  => (e.target.style.borderColor = "var(--border-subtle)")}
+        onBlur={(e) => (e.target.style.borderColor = "var(--border-subtle)")}
       />
     </div>
   );
