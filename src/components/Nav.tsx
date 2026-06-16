@@ -21,7 +21,7 @@ export default function Nav() {
     { href: "/about", label: tr.nav.philosophy },
     { href: "/paths/pour", label: tr.nav.pour },
     { href: "/paths/build", label: tr.nav.build },
-    { href: "/community", label: tr.nav.community },
+    // { href: "/community", label: tr.nav.community }, // hidden
     { href: "/apply", label: tr.nav.cta },
   ];
 

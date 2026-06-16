@@ -13,7 +13,7 @@ export default function Footer() {
       links: [
         { label: tr.footer.links.pour, href: "/paths/pour" },
         { label: tr.footer.links.build, href: "/paths/build" },
-        { label: tr.footer.links.community, href: "/community" },
+        // { label: tr.footer.links.community, href: "/community" }, // hidden
       ],
     },
     {
