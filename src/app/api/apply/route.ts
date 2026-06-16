@@ -1,8 +1,6 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const COURSE_LABELS: Record<string, string> = {
   mixology:    "Mixology — 6 weeks · 450 ₾ · Starts Jul 14",
   programming: "Programming — 6 weeks · 800 ₾ · Starts Jul 16",
@@ -10,6 +8,7 @@ const COURSE_LABELS: Record<string, string> = {
 
 export async function POST(req: Request) {
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const { course, firstName, lastName, dob, email, phone } = await req.json();
 
     const courseLabel = COURSE_LABELS[course] ?? course;
