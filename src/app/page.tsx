@@ -181,47 +181,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PILLARS */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto">
-          <ScrollReveal className="text-center mb-10 sm:mb-16">
-            <p className="section-label">{tr.pillars.label}</p>
-            <h2
-              className="display text-[1.8rem] sm:text-[2.4rem] lg:text-[3.2rem] font-bold"
-              style={{ color: "var(--text-primary)" }}
-            >
-              {tr.pillars.h2}
-            </h2>
-          </ScrollReveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-            {tr.pillars.items.map((pillar, i) => (
-              <ScrollReveal key={pillar.number} delay={i * 0.08}>
-                <div
-                  className="card-glow p-7 flex flex-col h-full"
-                  style={{ background: "var(--bg-card)" }}
-                >
-                  <div
-                    className="display text-[3rem] font-light mb-3 leading-none"
-                    style={{ color: "rgba(201,168,76,0.14)" }}
-                  >
-                    {pillar.number}
-                  </div>
-                  <h3 className="display text-[1.2rem] font-medium mb-2 gradient-text">
-                    {pillar.title}
-                  </h3>
-                  <p
-                    className="text-[0.78rem] leading-relaxed flex-1"
-                    style={{ color: "var(--text-secondary)" }}
-                  >
-                    {pillar.body}
-                  </p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* PATHS */}
       <section
         className="py-20 sm:py-32 px-4 sm:px-6"

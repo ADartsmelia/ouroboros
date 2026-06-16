@@ -57,7 +57,7 @@ export default function Nav() {
               <OuroborosSVG size={28} glowing={false} />
             </div>
             <span
-              className="display text-[0.85rem] font-medium tracking-[0.16em] uppercase hidden sm:block"
+              className="display text-[0.85rem] font-medium tracking-[0.16em] uppercase"
               style={{ color: "var(--text-primary)" }}
             >
               {tr.nav.brand}

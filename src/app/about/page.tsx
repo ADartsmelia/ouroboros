@@ -114,60 +114,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* FOUR PILLARS — scroll-reveal one by one */}
-      <section className="py-24 px-6" style={{ background: "var(--bg-secondary)" }}>
-        <div className="max-w-4xl mx-auto">
-          <ScrollReveal className="text-center mb-20">
-            <p className="section-label">{tr.about.pillarsLabel}</p>
-            <h2 className="text-4xl font-bold" style={{ color: "var(--text-primary)" }}>
-              {tr.about.pillarsH2}<br />
-              <span className="gradient-text">{tr.about.pillarsH2b}</span>
-            </h2>
-          </ScrollReveal>
-
-          <div className="flex flex-col gap-px" style={{ border: "1px solid var(--border-subtle)" }}>
-            {pillars.map((pillar, i) => (
-              <ScrollReveal key={pillar.number} delay={i * 0.12}>
-                <div
-                  className="p-10 lg:p-14 group"
-                  style={{ background: "var(--bg-card)", borderBottom: "1px solid var(--border-subtle)" }}
-                >
-                  <div className="flex items-start gap-8">
-                    <div className="flex-shrink-0">
-                      <div
-                        className="w-16 h-16 flex items-center justify-center text-2xl font-bold border"
-                        style={{
-                          borderColor: pillar.color,
-                          color: pillar.color,
-                          background: `rgba(${pillar.color === "#c9a84c" ? "201, 168, 76" : "74, 140, 92"}, 0.06)`,
-                        }}
-                      >
-                        {pillar.icon}
-                      </div>
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-xs tracking-[0.2em] uppercase mb-2" style={{ color: "var(--text-muted)" }}>
-                        {tr.about.pillarLabel} {pillar.number}
-                      </p>
-                      <h3 className="text-2xl font-bold mb-6" style={{ color: pillar.color }}>
-                        {pillar.title}
-                      </h3>
-                      <div className="flex flex-col gap-4">
-                        {pillar.body.split("\n\n").map((para, j) => (
-                          <p key={j} className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-                            {para}
-                          </p>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="py-32 px-6 text-center">
         <ScrollReveal>
