@@ -74,9 +74,9 @@ export default function PourPathPage() {
             transition={{ delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <span className="btn-primary animate-breathe opacity-50 cursor-not-allowed pointer-events-none">
+            <Link href="/apply?path=pour" className="btn-primary animate-breathe">
               {tr.pour.heroBtn}
-            </span>
+            </Link>
             <div className="flex items-center gap-6">
               {tr.pour.stats.map(([n, l]) => (
                 <div key={l}>
@@ -124,9 +124,9 @@ export default function PourPathPage() {
                   </div>
                 ))}
               </div>
-              <span className="btn-primary w-full text-center block opacity-50 cursor-not-allowed pointer-events-none">
+              <Link href="/apply?path=pour" className="btn-primary w-full text-center block">
                 {tr.pour.applyBtn}
-              </span>
+              </Link>
               <p className="text-xs text-center mt-4" style={{ color: "var(--text-muted)" }}>
                 {tr.pour.pricingNote}
               </p>
@@ -357,9 +357,9 @@ export default function PourPathPage() {
         </ScrollReveal>
         <div className="divider" />
         <ScrollReveal delay={0.1} className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-          <span className="btn-primary animate-breathe opacity-50 cursor-not-allowed pointer-events-none">
+          <Link href="/apply?path=pour" className="btn-primary animate-breathe">
             {tr.pour.ctaBtn}
-          </span>
+          </Link>
           <Link href="/paths/build" className="btn-outline inline-flex items-center gap-2">
             {tr.pour.ctaOutline} <ArrowRight size={14} />
           </Link>

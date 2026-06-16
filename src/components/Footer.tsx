@@ -47,9 +47,9 @@ export default function Footer() {
             </p>
             <div className="mt-8">
               <p className="section-label">{tr.footer.ctaLabel}</p>
-              <span className="btn-primary inline-block text-xs opacity-50 cursor-not-allowed pointer-events-none">
+              <Link href="/apply" className="btn-primary inline-block text-xs">
                 {tr.footer.ctaBtn}
-              </span>
+              </Link>
             </div>
           </div>
 

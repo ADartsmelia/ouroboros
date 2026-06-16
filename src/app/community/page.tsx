@@ -138,9 +138,9 @@ export default function CommunityPage() {
         </ScrollReveal>
         <div className="divider" />
         <ScrollReveal delay={0.1} className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-          <span className="btn-primary animate-breathe opacity-50 cursor-not-allowed pointer-events-none">
+          <Link href="/apply" className="btn-primary animate-breathe">
             {tr.community.ctaBtn}
-          </span>
+          </Link>
           <Link href="/about" className="btn-outline inline-flex items-center gap-2">
             {tr.community.ctaOutline} <ArrowRight size={14} />
           </Link>
