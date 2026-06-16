@@ -192,83 +192,33 @@ Iteration is not repetition. It is return with new eyes.`,
       ctaOutline: "Explore Paths",
     },
     apply: {
-      successLabel: "The cycle has received you",
-      successH1: "Your application is",
-      successH1b: "in the circle now",
-      successBody:
-        "We review applications weekly, by hand. You will hear from us within 7 days. If you are accepted, your first instruction will arrive in the same message.",
+      successLabel: "You're in",
+      successH1: "Registration received.",
+      successH1b: "We'll be in touch.",
+      successBody: "We'll contact you within 2 business days to confirm your spot and share next steps.",
       successMetaPre: "In the meantime, read the",
       successMetaLink1: "Philosophy",
       successMetaMid: "or explore the",
       successMetaLink2: "Seeker Stories",
-      heroLabel: "Begin a cycle",
-      heroH1: "This is an application,",
-      heroH1b: "not a sign-up form",
-      heroBody:
-        "We read every application. We accept people who we believe are ready to be changed — not people who are ready to learn. There is a difference. These questions are designed to find it.",
-      questionOf: "Question",
-      questionMid: "of",
-      emailLabel: "Your email address",
-      back: "← Back",
-      continue: "Continue →",
-      submit: "Submit Application →",
-      noteStrong: "A note on selectivity:",
-      noteBody:
-        "We do not select for impressive resumes or relevant experience. We select for readiness — which is a specific quality that has very little to do with what you've done before and everything to do with what you're willing to risk now.",
-      questions: [
-        {
-          label: "Which path are you drawn to?",
-          sublabel: "",
-          placeholder: "",
-          options: [
-            { label: "Mixology", sub: "Mixology · 8 weeks · $2,400" },
-            { label: "Programming", sub: "Programming · 8 weeks · $3,200" },
-            {
-              label: "I'm not sure yet",
-              sub: "We'll help you decide in the application",
-            },
-          ],
-        },
-        {
-          label: "What are you trying to shed?",
-          sublabel:
-            "Tell us what in your current life has reached its limit. Be honest — this is where the cycle begins.",
-          placeholder: "I've been a project manager for six years and...",
-          options: [],
-        },
-        {
-          label: "Show us a moment when you surprised yourself.",
-          sublabel:
-            "A time you did something you didn't think you could. It doesn't have to be related to your chosen path.",
-          placeholder: "Three years ago I...",
-          options: [],
-        },
-        {
-          label: "What would make you quit mid-cycle?",
-          sublabel:
-            "We ask this because we've seen people quit. We're not asking so we can prevent it — we're asking to understand what you're actually risking.",
-          placeholder: "If...",
-          options: [],
-        },
-        {
-          label: "When can you begin?",
-          sublabel: "",
-          placeholder: "",
-          options: [
-            { label: "Cycle 9 — July 2026", sub: "Limited spots remaining" },
-            {
-              label: "Cycle 10 — September 2026",
-              sub: "Applications opening soon",
-            },
-            {
-              label: "Notify me of future cycles",
-              sub: "Stay inside the circle",
-            },
-          ],
-        },
+      heroLabel: "Register",
+      heroH1: "Reserve your spot.",
+      heroH1b: "Courses start July 2026.",
+      heroBody: "Fill in your details below. We'll confirm your registration within 2 business days.",
+      courseLabel: "Which course are you registering for?",
+      courses: [
+        { value: "mixology", label: "Mixology", sub: "6 weeks · 12 lessons · 450 ₾ · Starts Jul 14" },
+        { value: "programming", label: "Programming", sub: "6 weeks · 18 lectures · 800 ₾ · Starts Jul 16" },
       ],
+      firstName: "First name",
+      lastName: "Last name",
+      dob: "Date of birth",
+      email: "Email address",
+      phone: "Phone number",
+      submit: "Register →",
+      submitting: "Sending...",
+      requiredNote: "All fields are required.",
     },
-    blog: {
+        blog: {
       label: "Insights",
       h1: "Ideas from inside",
       h1b: "the cycle",
@@ -1196,86 +1146,33 @@ I'll update this when I know what comes next.`,
       ctaOutline: "გაიცანი გზები",
     },
     apply: {
-      successLabel: "ციკლმა მიგიღო",
-      successH1: "შენი განაცხადი",
-      successH1b: "ახლა წრეშია",
-      successBody:
-        "ჩვენ განაცხადებს ყოველ კვირა, ხელით განვიხილავთ. ჩვენგან 7 დღის განმავლობაში გაიგებ. თუ მიგიღებენ, შენი პირველი დავალება იმავე წერილში მოვა.",
+      successLabel: "დარეგისტრირდი",
+      successH1: "რეგისტრაცია მიღებულია.",
+      successH1b: "მალე დაგიკავშირდებით.",
+      successBody: "2 სამუშაო დღის განმავლობაში დაგიკავშირდებით ადგილის დასადასტურებლად და შემდეგი ნაბიჯების გასაზიარებლად.",
       successMetaPre: "ამასობაში წაიკითხე",
       successMetaLink1: "ფილოსოფია",
       successMetaMid: "ან გაეცანი",
       successMetaLink2: "მაძიებლების ისტორიებს",
-      heroLabel: "დაიწყე ციკლი",
-      heroH1: "ეს განაცხადია,",
-      heroH1b: "და არა სარეგისტრაციო ფორმა",
-      heroBody:
-        "ჩვენ ყველა განაცხადს ვკითხულობთ. ვიღებთ ადამიანებს, რომლებიც, ჩვენი აზრით, მზად არიან, შეიცვალონ — და არა მათ, ვინც მზადაა, ისწავლოს. განსხვავებაა. ეს კითხვები ამის საპოვნელადაა გათვლილი.",
-      questionOf: "კითხვა",
-      questionMid: "/",
-      emailLabel: "შენი ელფოსტის მისამართი",
-      back: "← უკან",
-      continue: "გაგრძელება →",
-      submit: "განაცხადის გაგზავნა →",
-      noteStrong: "შენიშვნა სელექციურობაზე:",
-      noteBody:
-        "ჩვენ არ ვარჩევთ შთამბეჭდავი რეზიუმეების ან შესაბამისი გამოცდილების მიხედვით. ვარჩევთ მზაობის მიხედვით — ეს კონკრეტული თვისებაა, რომელსაც ძალიან მცირე კავშირი აქვს იმასთან, რაც აქამდე გააკეთე და ყველაფერი — იმასთან, რისი რისკის გაწევაც ახლა გსურს.",
-      questions: [
-        {
-          label: "რომელი გზა გიზიდავს?",
-          sublabel: "",
-          placeholder: "",
-          options: [
-            { label: "მიქსოლოგია", sub: "მიქსოლოგია · 8 კვირა · $2,400" },
-            {
-              label: "პროგრამირება",
-              sub: "პროგრამირება / პროგრამირება · 8 კვირა · $3,200",
-            },
-            {
-              label: "ჯერ დარწმუნებული არ ვარ",
-              sub: "განაცხადში დაგეხმარებით გადაწყვეტაში",
-            },
-          ],
-        },
-        {
-          label: "რის მოშორებას ცდილობ?",
-          sublabel:
-            "გვითხარი, რამ მიაღწია ზღვარს შენს ამჟამინდელ ცხოვრებაში. იყავი გულახდილი — სწორედ აქ იწყება ციკლი.",
-          placeholder: "ექვსი წელია პროექტის მენეჯერი ვარ და...",
-          options: [],
-        },
-        {
-          label: "გვაჩვენე მომენტი, როცა საკუთარ თავს გააკვირვე.",
-          sublabel:
-            "დრო, როცა გააკეთე ის, რასაც, გეგონა, ვერ შეძლებდი. სავალდებულო არ არის, რომ შენს არჩეულ გზასთან იყოს კავშირში.",
-          placeholder: "სამი წლის წინ მე...",
-          options: [],
-        },
-        {
-          label: "რა გაიძულებდა ციკლის შუაში თავის დანებებას?",
-          sublabel:
-            "ამას იმიტომ გეკითხებით, რომ გვინახავს, როგორ ანებებენ თავს ხალხი. არ გეკითხებით ამის ასაცილებლად — გეკითხებით იმის გასაგებად, რას რისკავ სინამდვილეში.",
-          placeholder: "თუ...",
-          options: [],
-        },
-        {
-          label: "როდის შეგიძლია დაწყება?",
-          sublabel: "",
-          placeholder: "",
-          options: [
-            { label: "ციკლი 9 — 2026 ივლისი", sub: "ადგილები შეზღუდულია" },
-            {
-              label: "ციკლი 10 — 2026 სექტემბერი",
-              sub: "განაცხადები მალე იხსნება",
-            },
-            {
-              label: "შემატყობინე მომავალი ციკლების შესახებ",
-              sub: "დარჩი წრეში",
-            },
-          ],
-        },
+      heroLabel: "რეგისტრაცია",
+      heroH1: "დაჯავშნე ადგილი.",
+      heroH1b: "კურსები იწყება ივლისში.",
+      heroBody: "შეავსე ქვემოთ მოცემული ფორმა. 2 სამუშაო დღეში დავადასტურებთ შენს რეგისტრაციას.",
+      courseLabel: "რომელ კურსზე გსურს რეგისტრაცია?",
+      courses: [
+        { value: "mixology", label: "მიქსოლოგია", sub: "6 კვირა · 12 გაკვეთილი · 450 ₾ · იწყება 14 ივლ" },
+        { value: "programming", label: "პროგრამირება", sub: "6 კვირა · 18 ლექცია · 800 ₾ · იწყება 16 ივლ" },
       ],
+      firstName: "სახელი",
+      lastName: "გვარი",
+      dob: "დაბადების თარიღი",
+      email: "ელ-ფოსტა",
+      phone: "ტელეფონი",
+      submit: "რეგისტრაცია →",
+      submitting: "იგზავნება...",
+      requiredNote: "ყველა ველი სავალდებულოა.",
     },
-    blog: {
+        blog: {
       label: "შეხედულებები",
       h1: "იდეები ციკლის",
       h1b: "შიგნიდან",

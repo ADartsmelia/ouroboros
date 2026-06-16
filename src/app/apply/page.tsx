@@ -1,58 +1,50 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import OuroborosSVG from "@/components/OuroborosSVG";
 import { useLang } from "@/components/LanguageProvider";
 
-const questionMeta = [
-  { id: "path", type: "radio" as const, optionValues: ["pour", "build", "unsure"] },
-  { id: "why", type: "textarea" as const, optionValues: [] },
-  { id: "evidence", type: "textarea" as const, optionValues: [] },
-  { id: "commitment", type: "textarea" as const, optionValues: [] },
-  { id: "readiness", type: "radio" as const, optionValues: ["cycle9", "cycle10", "notify"] },
-];
+type Form = {
+  course: string;
+  firstName: string;
+  lastName: string;
+  dob: string;
+  email: string;
+  phone: string;
+};
+
+const empty: Form = { course: "", firstName: "", lastName: "", dob: "", email: "", phone: "" };
 
 export default function ApplyPage() {
   const { tr } = useLang();
-  const [current, setCurrent] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [form, setForm] = useState<Form>(empty);
   const [submitted, setSubmitted] = useState(false);
-  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const questions = questionMeta.map((meta, i) => {
-    const text = tr.apply.questions[i];
-    return {
-      id: meta.id,
-      type: meta.type,
-      label: text.label,
-      sublabel: text.sublabel || undefined,
-      placeholder: text.placeholder || undefined,
-      options:
-        meta.type === "radio"
-          ? meta.optionValues.map((value, j) => ({
-              value,
-              label: text.options[j].label,
-              sub: text.options[j].sub,
-            }))
-          : undefined,
-    };
-  });
+  const set = (k: keyof Form) => (e: React.ChangeEvent<HTMLInputElement>) =>
+    setForm((f) => ({ ...f, [k]: e.target.value }));
 
-  const q = questions[current];
-  const isLast = current === questions.length - 1;
-  const canAdvance = answers[q.id] && answers[q.id].trim().length > 0;
+  const valid =
+    form.course &&
+    form.firstName.trim() &&
+    form.lastName.trim() &&
+    form.dob &&
+    form.email.includes("@") &&
+    form.phone.trim().length >= 6;
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!valid) return;
+    setLoading(true);
     try {
       await fetch("/api/apply", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, answers }),
+        body: JSON.stringify(form),
       });
-    } catch (_) {
-      // fail silently — user still sees success screen
-    }
+    } catch (_) {}
+    setLoading(false);
     setSubmitted(true);
   };
 
@@ -62,12 +54,12 @@ export default function ApplyPage() {
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-xl text-center"
+          transition={{ duration: 0.7 }}
+          className="max-w-lg text-center"
         >
           <div className="flex justify-center mb-10">
             <div className="animate-ouroboros">
-              <OuroborosSVG size={120} glowing />
+              <OuroborosSVG size={100} glowing />
             </div>
           </div>
           <p className="section-label">{tr.apply.successLabel}</p>
@@ -93,29 +85,27 @@ export default function ApplyPage() {
   return (
     <div style={{ background: "var(--bg-primary)" }}>
       {/* HERO */}
-      <section className="relative pt-40 pb-16 px-6 overflow-hidden">
+      <section className="relative pt-40 pb-12 px-6 overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{
-            background: "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(74, 140, 92, 0.07) 0%, transparent 60%)",
-          }}
+          style={{ background: "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(74,140,92,0.07) 0%, transparent 60%)" }}
         />
         <div className="max-w-2xl mx-auto text-center">
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="section-label">
             {tr.apply.heroLabel}
           </motion.p>
           <motion.h1
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl font-bold leading-[0.92] tracking-tight mb-6"
+            className="text-5xl font-bold leading-[0.95] tracking-tight mb-4"
             style={{ color: "var(--text-primary)" }}
           >
             {tr.apply.heroH1}<br />
             <span className="gradient-text">{tr.apply.heroH1b}</span>
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             className="text-base leading-relaxed"
@@ -127,163 +117,102 @@ export default function ApplyPage() {
       </section>
 
       {/* FORM */}
-      <section className="py-16 px-6 pb-32">
-        <div className="max-w-2xl mx-auto">
-          {/* Progress */}
-          <div className="mb-10">
-            <div className="flex justify-between mb-3">
-              <span className="text-xs tracking-widest uppercase" style={{ color: "var(--text-muted)" }}>
-                {tr.apply.questionOf} {current + 1} {tr.apply.questionMid} {questions.length}
-              </span>
-              <span className="text-xs" style={{ color: "var(--text-muted)" }}>
-                {Math.round(((current + 1) / questions.length) * 100)}%
-              </span>
-            </div>
-            <div className="w-full h-px" style={{ background: "var(--border-subtle)" }}>
-              <motion.div
-                className="h-px"
-                style={{ background: "var(--accent-gold)" }}
-                animate={{ width: `${((current + 1) / questions.length) * 100}%` }}
-                transition={{ duration: 0.5 }}
-              />
-            </div>
-          </div>
-
-          {/* Question */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={q.id}
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -30 }}
-              transition={{ duration: 0.35 }}
-            >
-              <h2 className="text-2xl font-bold mb-2" style={{ color: "var(--text-primary)" }}>
-                {q.label}
-              </h2>
-              {q.sublabel && (
-                <p className="text-sm mb-8" style={{ color: "var(--text-secondary)" }}>
-                  {q.sublabel}
-                </p>
-              )}
-              {!q.sublabel && <div className="mb-8" />}
-
-              {q.type === "radio" && (
-                <div className="flex flex-col gap-3">
-                  {q.options?.map((opt) => (
-                    <button
-                      key={opt.value}
-                      onClick={() => setAnswers((a) => ({ ...a, [q.id]: opt.value }))}
-                      className="text-left p-5 border transition-all duration-200"
-                      style={{
-                        borderColor: answers[q.id] === opt.value ? "var(--border-glow)" : "var(--border-subtle)",
-                        background: answers[q.id] === opt.value ? "rgba(74, 140, 92, 0.07)" : "var(--bg-card)",
-                        boxShadow: answers[q.id] === opt.value ? "var(--glow-green)" : "none",
-                      }}
-                    >
-                      <p className="font-semibold" style={{ color: "var(--text-primary)" }}>{opt.label}</p>
-                      {opt.sub && (
-                        <p className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>{opt.sub}</p>
-                      )}
-                    </button>
-                  ))}
-                </div>
-              )}
-
-              {q.type === "textarea" && (
-                <textarea
-                  value={answers[q.id] || ""}
-                  onChange={(e) => setAnswers((a) => ({ ...a, [q.id]: e.target.value }))}
-                  placeholder={q.placeholder}
-                  rows={5}
-                  className="w-full p-5 text-sm resize-none"
+      <section className="py-12 px-6 pb-32">
+        <motion.form
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          onSubmit={handleSubmit}
+          className="max-w-xl mx-auto flex flex-col gap-8"
+        >
+          {/* Course selector */}
+          <div>
+            <p className="section-label mb-4">{tr.apply.courseLabel}</p>
+            <div className="flex flex-col gap-3">
+              {tr.apply.courses.map((c) => (
+                <button
+                  key={c.value}
+                  type="button"
+                  onClick={() => setForm((f) => ({ ...f, course: c.value }))}
+                  className="text-left p-5 border transition-all duration-200"
                   style={{
-                    background: "var(--bg-card)",
-                    border: "1px solid var(--border-subtle)",
-                    color: "var(--text-primary)",
-                    outline: "none",
-                    lineHeight: "1.7",
-                    transition: "border-color 0.2s",
+                    borderColor: form.course === c.value ? "var(--border-glow)" : "var(--border-subtle)",
+                    background: form.course === c.value ? "rgba(74,140,92,0.07)" : "var(--bg-card)",
+                    boxShadow: form.course === c.value ? "var(--glow-green)" : "none",
                   }}
-                  onFocus={(e) => (e.target.style.borderColor = "var(--border-glow)")}
-                  onBlur={(e) => (e.target.style.borderColor = "var(--border-subtle)")}
-                />
-              )}
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Email (last step only) */}
-          {isLast && canAdvance && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mt-8"
-            >
-              <label className="section-label block mb-3">{tr.apply.emailLabel}</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
-                className="w-full px-5 py-4 text-sm"
-                style={{
-                  background: "var(--bg-card)",
-                  border: "1px solid var(--border-subtle)",
-                  color: "var(--text-primary)",
-                  outline: "none",
-                }}
-                onFocus={(e) => (e.target.style.borderColor = "var(--border-glow)")}
-                onBlur={(e) => (e.target.style.borderColor = "var(--border-subtle)")}
-              />
-            </motion.div>
-          )}
-
-          {/* Navigation */}
-          <div className="flex items-center justify-between mt-10">
-            {current > 0 ? (
-              <button
-                onClick={() => setCurrent((c) => c - 1)}
-                className="text-sm tracking-widest uppercase"
-                style={{ color: "var(--text-muted)" }}
-              >
-                {tr.apply.back}
-              </button>
-            ) : (
-              <div />
-            )}
-            {isLast ? (
-              <button
-                onClick={handleSubmit}
-                disabled={!canAdvance || !email}
-                className="btn-primary text-sm"
-                style={{ opacity: !canAdvance || !email ? 0.4 : 1 }}
-              >
-                {tr.apply.submit}
-              </button>
-            ) : (
-              <button
-                onClick={() => setCurrent((c) => c + 1)}
-                disabled={!canAdvance}
-                className="btn-primary text-sm"
-                style={{ opacity: !canAdvance ? 0.4 : 1 }}
-              >
-                {tr.apply.continue}
-              </button>
-            )}
+                >
+                  <p className="font-semibold" style={{ color: "var(--text-primary)" }}>{c.label}</p>
+                  <p className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>{c.sub}</p>
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* NOTE */}
-      <section className="pb-20 px-6">
-        <div className="max-w-2xl mx-auto">
-          <div className="p-6 border-l-2" style={{ borderColor: "var(--accent-gold)", background: "rgba(201, 168, 76, 0.04)" }}>
-            <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-              <strong style={{ color: "var(--text-primary)" }}>{tr.apply.noteStrong}</strong> {tr.apply.noteBody}
-            </p>
+          {/* Name row */}
+          <div className="grid grid-cols-2 gap-4">
+            <Field label={tr.apply.firstName} type="text" value={form.firstName} onChange={set("firstName")} placeholder="Anri" />
+            <Field label={tr.apply.lastName}  type="text" value={form.lastName}  onChange={set("lastName")}  placeholder="Dartsmelia" />
           </div>
-        </div>
+
+          {/* DOB */}
+          <Field label={tr.apply.dob} type="date" value={form.dob} onChange={set("dob")} placeholder="" />
+
+          {/* Email */}
+          <Field label={tr.apply.email} type="email" value={form.email} onChange={set("email")} placeholder="you@email.com" />
+
+          {/* Phone */}
+          <Field label={tr.apply.phone} type="tel" value={form.phone} onChange={set("phone")} placeholder="+995 5XX XXX XXX" />
+
+          {/* Submit */}
+          <button
+            type="submit"
+            disabled={!valid || loading}
+            className="btn-primary w-full text-center"
+            style={{ opacity: !valid || loading ? 0.45 : 1, transition: "opacity 0.2s" }}
+          >
+            {loading ? tr.apply.submitting : tr.apply.submit}
+          </button>
+
+          <p className="text-xs text-center" style={{ color: "var(--text-muted)" }}>
+            {tr.apply.requiredNote}
+          </p>
+        </motion.form>
       </section>
+    </div>
+  );
+}
+
+function Field({
+  label, type, value, onChange, placeholder,
+}: {
+  label: string;
+  type: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder: string;
+}) {
+  return (
+    <div className="flex flex-col gap-2">
+      <label className="text-xs tracking-widest uppercase" style={{ color: "var(--text-muted)" }}>
+        {label}
+      </label>
+      <input
+        type={type}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        required
+        className="w-full px-5 py-4 text-sm"
+        style={{
+          background: "var(--bg-card)",
+          border: "1px solid var(--border-subtle)",
+          color: "var(--text-primary)",
+          outline: "none",
+          transition: "border-color 0.2s",
+        }}
+        onFocus={(e) => (e.target.style.borderColor = "var(--border-glow)")}
+        onBlur={(e)  => (e.target.style.borderColor = "var(--border-subtle)")}
+      />
     </div>
   );
 }
